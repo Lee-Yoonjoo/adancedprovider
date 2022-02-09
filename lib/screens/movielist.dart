@@ -1,5 +1,7 @@
 
+import 'package:advancedprovider/networking/movieapi.dart';
 import 'package:flutter/material.dart';
+import 'package:advancedprovider/models/movie.dart';
 
 
 
@@ -11,6 +13,8 @@ class MovieList extends StatefulWidget {
 }
 
 class _MovieListState extends State<MovieList>{
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +28,18 @@ class _MovieListState extends State<MovieList>{
 
 
 
+class MovieProvider extends ChangeNotifier {
+  MovieApi _movieData = MovieApi();
+  List<Movie> _movies = [];
 
+  List<Movie> get movies => _movies;
+  loadMovies() {
+    List<Movie> listMovies = _movieData.loadMovies();
+    _movies = listMovies;
+    notifyListeners();
+  }
 
-class MovieProvider extends ChangeNotifier{
+  clearMovies() {
+    _movies.clear();
+  }
 }
