@@ -25,10 +25,6 @@ class MyApp extends StatelessWidget {
         ],
         child: Home(),
       ),
-      // home: ChangeNotifierProvider(
-      //   create: (BuildContext context) => CounterProvider(),
-      //   child: Home(),
-      // ),
     );
   }
 }
