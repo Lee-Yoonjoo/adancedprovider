@@ -1,4 +1,10 @@
 
+//Creating model classes the json_serializable way
+
+import 'package:json_annotation/json_annotation.dart';
+part 'movie.g.dart';
+
+@JsonSerializable()
 class Movie {
   String overview;
   String posterPath;
@@ -14,15 +20,16 @@ class Movie {
         required this.voteAverage,
         required this.voteCount});
 
-  Movie.fromJson(Map<String, dynamic> json)
-      : overview = json['overview'] as String,
-        posterPath = json['poster_path'] as String,
-        releaseDate = json['release_date'] as String,
-        title = json['title'] as String,
-        voteAverage = double.parse(json['vote_average'].toString()),
-        voteCount = json['vote_count'] as int;
 
-  String get posterUrl => 'http://image.tmdb.org/t/p/w500/${this.posterPath}';
+  /// A necessary factory constructor for creating a new User instance
+  /// from a map. Pass the map to the generated `_$UserFromJson()` constructor.
+  /// The constructor is named after the source class, in this case, User.
+  factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
+
+  /// `toJson` is the convention for a class to declare support for serialization
+  /// to JSON. The implementation simply calls the private, generated
+  /// helper method `_$UserToJson`.
+  Map<String, dynamic> toJson() => _$MovieToJson(this);
 }
 
 /*{
