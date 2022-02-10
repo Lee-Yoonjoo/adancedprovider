@@ -15,6 +15,7 @@ Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
       voteCount: json['vote_count'] as int,
     );
 
+
 Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
       'overview': instance.overview,
       'poster_path': instance.posterPath,
