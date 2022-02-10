@@ -30,52 +30,53 @@ class _MovieListState extends State<MovieList> {
             padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(),
+
                 Text(
                   movieItem.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
                 SizedBox(
                   height: 150,
                   child:  Column(
                     children : [
                       SizedBox(
-                        height: 100,
+                        height: 140,
+                        width: 800,
                         child: Text(
                           movieItem.overview,
                           overflow: TextOverflow.fade,
+                          textAlign: TextAlign.justify,
                           style: TextStyle(fontSize: 13),
-                          maxLines: 8,
+                          maxLines: 12,
                         ),
                       ),
-                     Center(
-                      child:Container(
-                        height: 10,
-
-                      child:  Icon(
-                        alreadySaved ? Icons.favorite : Icons.favorite_border,
-                        color: alreadySaved ? Colors.red : null,
-                        semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
-                      ),
-                      ) ,
-
-                     ),
-
                     ],
                   ),
-
                 ),
-
+                SizedBox(
+                  height: 10,
+                  child: Align(
+                    alignment: Alignment(1.0, 1.0),
+                    child: Icon(
+                      alreadySaved ? Icons.favorite : Icons.favorite_border,
+                      color: alreadySaved ? Colors.red : null,
+                      semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+                    ),
+                  ),
+                ) ,
               ],
             ),
           ),
         ),
+
       ],
     );
 
@@ -83,6 +84,7 @@ class _MovieListState extends State<MovieList> {
 
   Widget movieListWidget(List<Movie> movies) {
     return ListView.separated(
+      shrinkWrap: true,
       itemCount: movies.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
@@ -116,6 +118,7 @@ class _MovieListState extends State<MovieList> {
     movieProvider = Provider.of<MovieProvider>(context,listen: false);
     movieProvider.loadMovies();
     return Scaffold(
+
       appBar: AppBar(
         title: const Text('Movie List'),
       ),

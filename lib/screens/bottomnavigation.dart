@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:advancedprovider/networking/movieapi.dart';
-import 'package:advancedprovider/models/movie.dart';
 import 'package:advancedprovider/screens/home.dart';
 import 'package:advancedprovider/screens/movielist.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as developer;
+
+import 'favoritelist.dart';
 
 class BottomNavigation extends StatelessWidget {
   BottomNavigation({Key? key}) : super(key: key);
@@ -16,6 +16,9 @@ class BottomNavigation extends StatelessWidget {
         break;
       case 1:
         return MovieList();
+        break;
+      case 2:
+        return FavoriteList();
         break;
     }
     return Container();
@@ -33,6 +36,7 @@ class BottomNavigation extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.local_movies), label: 'Movies'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
         ],
         currentIndex: _bottomNavigationProvider.currentNavigationIndex,
         selectedItemColor: Colors.red[800],
