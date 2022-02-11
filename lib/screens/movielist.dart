@@ -3,6 +3,7 @@ import 'package:advancedprovider/screens/favoritelist.dart';
 import 'package:flutter/material.dart';
 import 'package:advancedprovider/models/movie.dart';
 import 'package:provider/provider.dart';
+import 'dart:developer' as developer;
 
 class MovieList extends StatefulWidget {
   const MovieList({Key? key}) : super(key: key);
@@ -13,11 +14,14 @@ class MovieList extends StatefulWidget {
 
 class _MovieListState extends State<MovieList> {
   late MovieProvider movieProvider;
-  late FavoriteProvider favoritProvider;
+  late FavoriteProvider favoriteProvider;
+  IconData icon = Icons.favorite_border;
+  Color color = Colors.grey;
+  bool isAdded = false;
 
-//  final favoritesList = <Movie>{};
   Widget movieListItemWidget(Movie movieItem) {
-    final favoritesList = context.watch<FavoriteProvider>();
+    favoriteProvider = Provider.of<FavoriteProvider>(context, listen: false);
+    final favoritesList = favoriteProvider.favoriteMovies;
     return Row(
       children: [
         ClipRRect(
@@ -64,41 +68,67 @@ class _MovieListState extends State<MovieList> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 5,
-                  child: Align(
-                    alignment: const Alignment(1.0, 1.0),
-                    child: ListTile(
-                      leading: GestureDetector(
-                     //   behavior: HitTestBehavior.translucent,
-                        onTap: () {
-                          !favoritProvider.favoriteMovies.contains(movieItem)
-                              ? favoritesList.add(movieItem)
-                              : favoritesList.remove(movieItem);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(favoritProvider.favoriteMovies
-                                      .contains(movieItem)
-                                  ? 'Added to favorites.'
-                                  : 'Removed from favorites.'),
-                              duration: const Duration(seconds: 1),
-                            ),
-                          );
-                        },
-                        child: Icon(
-                          favoritProvider.favoriteMovies.contains(movieItem)
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                        ),
-                      ),
+                ListTile(
+                  /*    leading: GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      setState(() {
+                        developer.log('OnTap works. Set State ',
+                            name: 'Test OnTap Func from GestureDetector');
+                        !favoritProvider.favoriteMovies.contains(movieItem)
+                            ? favoritesList.add(movieItem)
+                            : favoritesList.remove(movieItem);
+                     */ /*   ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(favoritProvider.favoriteMovies
+                                    .contains(movieItem)
+                                ? 'Added to favorites.'
+                                : 'Removed from favorites.'),
+                            duration: const Duration(seconds: 1),
+                          ),
+                        );*/ /*
+                      });
+                    },
 
-                      // onTap: _pushSaved(movieItem),
-                    ),
+                  ),*/
+                  trailing: IconButton(
+                    icon: favoritesList.contains(movieItem)
+                        ? const Icon(Icons.favorite, color: Colors.red)
+                        : const Icon(Icons.favorite_border, color: Colors.grey),
+                    onPressed: () {
+                      developer.log('OnTap works. Set State ', name: 'Test OnTap Func from GestureDetector');
+
+                      !favoritesList.contains(movieItem)
+                          ? favoriteProvider.add(movieItem)
+                          : favoriteProvider.remove(movieItem);
+                    },
                   ),
                 ),
               ],
             ),
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Popup example'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("Hello"),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: Text('Close'),
         ),
       ],
     );
@@ -139,7 +169,7 @@ class _MovieListState extends State<MovieList> {
   Widget build(BuildContext context) {
     movieProvider = Provider.of<MovieProvider>(context, listen: false);
     movieProvider.loadMovies();
-    favoritProvider = Provider.of<FavoriteProvider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Movie List'),

@@ -2,6 +2,7 @@ import 'package:advancedprovider/networking/movieapi.dart';
 import 'package:flutter/material.dart';
 import 'package:advancedprovider/models/movie.dart';
 import 'package:provider/provider.dart';
+import 'dart:developer' as developer;
 
 class FavoriteList extends StatefulWidget {
   const FavoriteList({Key? key}) : super(key: key);
@@ -139,12 +140,14 @@ class _FavoriteListState extends State<FavoriteList> {
     favoriteProvider = Provider.of<FavoriteProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movie List'),
+        title: const Text('Favorites'),
       ),
       body: Consumer<FavoriteProvider>(
         builder: (context, provider, child) {
           //When the data is well loaded
           if (provider.favoriteMovies.isNotEmpty) {
+
+
             return movieListWidget(provider.favoriteMovies);
           }
           //While the data is loading.
@@ -165,10 +168,13 @@ class FavoriteProvider extends ChangeNotifier {
   void add(Movie favoriteMovie) {
     _favoriteMovies.add(favoriteMovie);
     notifyListeners();
+
+    developer.log('${favoriteMovie.title} is added', name: 'FavoriteProvider');
   }
 
   void remove(Movie favoriteMovie) {
     _favoriteMovies.remove(favoriteMovie);
     notifyListeners();
+    developer.log('${favoriteMovie.title} is removed', name: 'FavoriteProvider');
   }
 }
