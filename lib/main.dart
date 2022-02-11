@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
               create: (BuildContext context) => MovieProvider()),
           ChangeNotifierProvider(
-              create: (BuildContext context) => FavoritProvider()),
+              create: (BuildContext context) => FavoriteProvider()),
           ChangeNotifierProvider(
               create: (BuildContext context) => BottomNavigationProvider()),
         ],

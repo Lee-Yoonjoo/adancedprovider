@@ -30,6 +30,8 @@ class Movie {
   /// to JSON. The implementation simply calls the private, generated
   /// helper method `_$UserToJson`.
   Map<String, dynamic> toJson() => _$MovieToJson(this);
+
+
 }
 
 /*{

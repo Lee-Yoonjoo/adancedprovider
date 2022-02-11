@@ -11,21 +11,36 @@ class FavoriteList extends StatefulWidget {
 }
 
 class _FavoriteListState extends State<FavoriteList> {
-  late FavoritProvider movieProvider;
+  late FavoriteProvider favoriteProvider;
 
   final _saved = <Movie>{};
 
   Widget movieListItemWidget(Movie movieItem) {
     final favorites = _saved.contains(movieItem);
     return  Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+     // margin: EdgeInsets.symmetric(vertical: 8.0),
       height: 200.0,
-      child: Card(
-
-        child: Column(
+      child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children:<Widget>[
+
+            //Only with Image it causes "A" RenderFlex overflowed by pixels"
+            Flexible(
+              child: Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+                    image: DecorationImage(
+                      image:NetworkImage(
+                          'http://image.tmdb.org/t/p/w500/${movieItem.posterPath}'
+                      ),
+                      fit: BoxFit.fitWidth,
+                    )),
+              ),
+            ),
+
             Padding(
               padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
               child: Text(
@@ -36,25 +51,10 @@ class _FavoriteListState extends State<FavoriteList> {
                 style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold,),
               ),
             ),
-            //Only with Image it causes "A" RenderFlex overflowed by pixels"
-            Flexible(
-              child: Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image:NetworkImage(
-                          'http://image.tmdb.org/t/p/w500/${movieItem.posterPath}'
-                      ),
-                      fit: BoxFit.fitWidth,
-                    )),
-              ),
-            ),
           ],
 
         ),
 
-      ),
     );
 
     /*Card(
@@ -102,25 +102,32 @@ class _FavoriteListState extends State<FavoriteList> {
       shrinkWrap: true,
       itemCount: movies.length,
       itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(10),
-          child: Container(
-            height: 200,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 3,
-                  blurRadius: 3,
-                  offset: Offset(0, 0), // changes position of shadow
+        return GestureDetector(
+          onTap: () {
+
+          },
+           child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 3,
+                      blurRadius: 3,
+                      offset: Offset(0, 0), // changes position of shadow
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            child: movieListItemWidget(movies[index]),
-          ),
+                child: movieListItemWidget(movies[index]),
+              ),
+           ),
         );
+
+
       },
       gridDelegate:
           const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
@@ -129,39 +136,39 @@ class _FavoriteListState extends State<FavoriteList> {
 
   @override
   Widget build(BuildContext context) {
-    movieProvider = Provider.of<FavoritProvider>(context, listen: false);
-    movieProvider.loadMovies();
+    favoriteProvider = Provider.of<FavoriteProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Movie List'),
       ),
-      body: Consumer<FavoritProvider>(
+      body: Consumer<FavoriteProvider>(
         builder: (context, provider, child) {
           //When the data is well loaded
-          if (provider.movies.isNotEmpty) {
-            return movieListWidget(provider.movies);
+          if (provider.favoriteMovies.isNotEmpty) {
+            return movieListWidget(provider.favoriteMovies);
           }
           //While the data is loading.
-          return Center(child: CircularProgressIndicator());
+          return  Center(
+            child: Text('No favorites added.'),
+          );
         },
       ),
     );
   }
 }
 
-class FavoritProvider extends ChangeNotifier {
-  MovieApi _movieData = MovieApi();
-  List<Movie> _movies = [];
+class FavoriteProvider extends ChangeNotifier {
+  final List<Movie> _favoriteMovies = [];
 
-  List<Movie> get movies => _movies;
+  List<Movie> get favoriteMovies => _favoriteMovies;
 
-  loadMovies() async {
-    List<Movie> listMovies = await _movieData.loadMovies();
-    _movies = listMovies;
+  void add(Movie favoriteMovie) {
+    _favoriteMovies.add(favoriteMovie);
     notifyListeners();
   }
 
-  clearMovies() {
-    _movies.clear();
+  void remove(Movie favoriteMovie) {
+    _favoriteMovies.remove(favoriteMovie);
+    notifyListeners();
   }
 }

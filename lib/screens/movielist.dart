@@ -1,4 +1,5 @@
 import 'package:advancedprovider/networking/movieapi.dart';
+import 'package:advancedprovider/screens/favoritelist.dart';
 import 'package:flutter/material.dart';
 import 'package:advancedprovider/models/movie.dart';
 import 'package:provider/provider.dart';
@@ -11,12 +12,12 @@ class MovieList extends StatefulWidget {
 }
 
 class _MovieListState extends State<MovieList> {
-
   late MovieProvider movieProvider;
+  late FavoriteProvider favoritProvider;
 
-  final _saved = <Movie>{};
-  Widget movieListItemWidget(Movie movieItem){
-    final alreadySaved = _saved.contains(movieItem);
+//  final favoritesList = <Movie>{};
+  Widget movieListItemWidget(Movie movieItem) {
+    final favoritesList = context.watch<FavoriteProvider>();
     return Row(
       children: [
         ClipRRect(
@@ -24,35 +25,37 @@ class _MovieListState extends State<MovieList> {
               topLeft: Radius.circular(20),
               bottomLeft: Radius.circular(20),
             ),
-            child: Image.network('http://image.tmdb.org/t/p/w500/${movieItem.posterPath}')),
+            child: Image.network(
+                'http://image.tmdb.org/t/p/w500/${movieItem.posterPath}')),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
-                Text(
-                  movieItem.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                SizedBox(
+                  height: 40,
+                  child: Text(
+                    movieItem.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                SizedBox(height: 5),
                 SizedBox(
-                  height: 150,
-                  child:  Column(
-                    children : [
+                  height: 140,
+                  child: Column(
+                    children: [
                       SizedBox(
                         height: 140,
                         width: 800,
                         child: Text(
                           movieItem.overview,
-                          overflow: TextOverflow.fade,
+                          overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.justify,
                           style: TextStyle(fontSize: 13),
                           maxLines: 12,
@@ -62,24 +65,43 @@ class _MovieListState extends State<MovieList> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                   child: Align(
-                    alignment: Alignment(1.0, 1.0),
-                    child: Icon(
-                      alreadySaved ? Icons.favorite : Icons.favorite_border,
-                      color: alreadySaved ? Colors.red : null,
-                      semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+                    alignment: const Alignment(1.0, 1.0),
+                    child: ListTile(
+                      leading: GestureDetector(
+                     //   behavior: HitTestBehavior.translucent,
+                        onTap: () {
+                          !favoritProvider.favoriteMovies.contains(movieItem)
+                              ? favoritesList.add(movieItem)
+                              : favoritesList.remove(movieItem);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(favoritProvider.favoriteMovies
+                                      .contains(movieItem)
+                                  ? 'Added to favorites.'
+                                  : 'Removed from favorites.'),
+                              duration: const Duration(seconds: 1),
+                            ),
+                          );
+                        },
+                        child: Icon(
+                          favoritProvider.favoriteMovies.contains(movieItem)
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                        ),
+                      ),
+
+                      // onTap: _pushSaved(movieItem),
                     ),
                   ),
-                ) ,
+                ),
               ],
             ),
           ),
         ),
-
       ],
     );
-
   }
 
   Widget movieListWidget(List<Movie> movies) {
@@ -115,10 +137,10 @@ class _MovieListState extends State<MovieList> {
 
   @override
   Widget build(BuildContext context) {
-    movieProvider = Provider.of<MovieProvider>(context,listen: false);
+    movieProvider = Provider.of<MovieProvider>(context, listen: false);
     movieProvider.loadMovies();
+    favoritProvider = Provider.of<FavoriteProvider>(context, listen: false);
     return Scaffold(
-
       appBar: AppBar(
         title: const Text('Movie List'),
       ),
@@ -134,6 +156,11 @@ class _MovieListState extends State<MovieList> {
       ),
     );
   }
+
+/*   _pushSaved(Movie favoriteMovie) {
+     favoritProvider = Provider.of<FavoriteProvider>(context, listen: false);
+    Navigator.pushNamed(context, favoritProvider.addFavorites(favoriteMovie));
+  }*/
 }
 
 class MovieProvider extends ChangeNotifier {
