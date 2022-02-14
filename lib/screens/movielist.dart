@@ -14,46 +14,49 @@ class MovieList extends StatelessWidget {
 
     return Scaffold(
       body: NestedScrollView(
-        floatHeaderSlivers: true,
-        headerSliverBuilder: (context, innnerBoxIsScrolled) => [
-          SliverAppBar(
-            floating: true,
-            snap: true,
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            title: const Text(
-              'Movie List',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-        ],
-        body: ListView.builder(
-          shrinkWrap: true,
-          itemCount: movieProvider.movies.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                height: 250,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 3,
-                      blurRadius: 3,
-                      offset: Offset(0, 0), // changes position of shadow
-                    ),
-                  ],
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innnerBoxIsScrolled) => [
+                const SliverAppBar(
+                  floating: true,
+                  snap: true,
+                  centerTitle: true,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  title: Text(
+                    'Movie List',
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ),
-                child: MovieListItemWidget(movieProvider.movies[index]),
-              ),
-            );
-          },
-        ),
-      ),
+              ],
+          body: MediaQuery.removePadding(
+            removeTop: true,
+            context: context,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: movieProvider.movies.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    height: 250,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 3,
+                          blurRadius: 3,
+                          offset: Offset(0, 0), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: MovieListItemWidget(movieProvider.movies[index]),
+                  ),
+                );
+              },
+            ),
+          )),
     );
   }
 }

@@ -16,19 +16,25 @@ class FavoriteList extends StatelessWidget {
       body: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innnerBoxIsScrolled) => [
-          SliverAppBar(
+          const SliverAppBar(
             floating: true,
             snap: true,
             centerTitle: true,
             backgroundColor: Colors.transparent,
             elevation: 0,
-            title: const Text(
+            title: Text(
               'Favorites',
               style: TextStyle(color: Colors.grey),
             ),
           ),
         ],
-        body: Consumer<MovieProvider>(
+
+        body:
+
+        MediaQuery.removePadding(
+        removeTop: true,
+        context: context,
+        child: Consumer<MovieProvider>(
           builder: (context, provider, index) => provider
                   .favoriteMovies.isNotEmpty
               ? GridView.builder(
@@ -66,6 +72,7 @@ class FavoriteList extends StatelessWidget {
               : const Center(
                   child: Text('No favorites added.'),
                 ),
+        ),
         ),
       ),
     );

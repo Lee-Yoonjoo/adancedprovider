@@ -14,7 +14,7 @@ class MovieProvider extends ChangeNotifier {
   List<Movie> get favoriteMovies => _favoriteMovies;
 
   loadMovies() async {
-    List<Movie> listMovies = await _movieData.loadMovies();
+    List<Movie> listMovies = await _movieData.loadPopularMovies();
     _movies = listMovies;
     notifyListeners();
   }
