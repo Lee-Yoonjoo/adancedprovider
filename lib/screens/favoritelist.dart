@@ -17,7 +17,6 @@ class _FavoriteListState extends State<FavoriteList> {
   final _saved = <Movie>{};
 
   Widget movieListItemWidget(Movie movieItem) {
-    final favorites = _saved.contains(movieItem);
     return  Container(
      // margin: EdgeInsets.symmetric(vertical: 8.0),
       height: 200.0,
@@ -53,9 +52,7 @@ class _FavoriteListState extends State<FavoriteList> {
               ),
             ),
           ],
-
         ),
-
     );
   }
 
@@ -98,6 +95,7 @@ class _FavoriteListState extends State<FavoriteList> {
 
   @override
   Widget build(BuildContext context) {
+    //understanding Stateful vs Stateless
     favoriteProvider = Provider.of<FavoriteProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
