@@ -1,27 +1,65 @@
-import 'package:advancedprovider/networking/movieapi.dart';
+
 import 'package:advancedprovider/screens/favoritelist.dart';
 import 'package:flutter/material.dart';
 import 'package:advancedprovider/models/movie.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as developer;
 
-class MovieList extends StatefulWidget {
-  const MovieList({Key? key}) : super(key: key);
+import '../movieprovider.dart';
+
+
+
+class MovieList extends StatelessWidget {
 
   @override
-  _MovieListState createState() => _MovieListState();
+  Widget build(BuildContext context) {
+    final movieProvider = Provider.of<MovieProvider>(context, listen: false);
+    movieProvider.loadMovies();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Movie List'),
+      ),
+      body: ListView.builder(
+        shrinkWrap: true,
+        itemCount: movieProvider.movies.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.all(10),
+            child: Container(
+              height: 250,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 3,
+                    blurRadius: 3,
+                    offset: Offset(0, 0), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: MovieListItemWidget(movieProvider.movies[index]),
+            ),
+          );
+        },
+
+      ),
+    );
+  }
 }
 
-class _MovieListState extends State<MovieList> {
-  late MovieProvider movieProvider;
-  late FavoriteProvider favoriteProvider;
-  IconData icon = Icons.favorite_border;
-  Color color = Colors.grey;
-  bool isAdded = false;
 
-  Widget movieListItemWidget(Movie movieItem) {
-    favoriteProvider = Provider.of<FavoriteProvider>(context, listen: false);
-    final favoritesList = favoriteProvider.favoriteMovies;
+
+class MovieListItemWidget extends StatelessWidget {
+
+  final Movie movieItem;
+
+  const MovieListItemWidget(this.movieItem, {Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final favoritesList = context.watch<MovieProvider>();
     return Row(
       children: [
         ClipRRect(
@@ -69,38 +107,20 @@ class _MovieListState extends State<MovieList> {
                   ),
                 ),
                 ListTile(
-                  /*    leading: GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      setState(() {
-                        developer.log('OnTap works. Set State ',
-                            name: 'Test OnTap Func from GestureDetector');
-                        !favoritProvider.favoriteMovies.contains(movieItem)
-                            ? favoritesList.add(movieItem)
-                            : favoritesList.remove(movieItem);
-                     */ /*   ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(favoritProvider.favoriteMovies
-                                    .contains(movieItem)
-                                ? 'Added to favorites.'
-                                : 'Removed from favorites.'),
-                            duration: const Duration(seconds: 1),
-                          ),
-                        );*/ /*
-                      });
-                    },
-
-                  ),*/
                   trailing: IconButton(
-                    icon: favoritesList.contains(movieItem)
-                        ? const Icon(Icons.favorite, color: Colors.red)
+                    icon:favoritesList.favoriteMovies.contains(movieItem)
+                        ? const Icon(Icons.favorite, color: Colors.red,)
                         : const Icon(Icons.favorite_border, color: Colors.grey),
                     onPressed: () {
                       developer.log('OnTap works. Set State ', name: 'Test OnTap Func from GestureDetector');
 
-                      !favoritesList.contains(movieItem)
-                          ? favoriteProvider.add(movieItem)
-                          : favoriteProvider.remove(movieItem);
+                      !favoritesList.favoriteMovies.contains(movieItem)
+                          ? favoritesList.add(movieItem)
+                          : favoritesList.remove(movieItem);
+
+                      // developer.log('${favoritesList.isAdded}', name: 'Update ListTile');
+
+
                     },
                   ),
                 ),
@@ -110,102 +130,8 @@ class _MovieListState extends State<MovieList> {
         ),
       ],
     );
+
   }
 
-  Widget _buildPopupDialog(BuildContext context) {
-    return new AlertDialog(
-      title: const Text('Popup example'),
-      content: new Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("Hello"),
-        ],
-      ),
-      actions: <Widget>[
-        new FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          textColor: Theme.of(context).primaryColor,
-          child: Text('Close'),
-        ),
-      ],
-    );
-  }
 
-  Widget movieListWidget(List<Movie> movies) {
-    return ListView.separated(
-      shrinkWrap: true,
-      itemCount: movies.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(10),
-          child: Container(
-            height: 250,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 3,
-                  blurRadius: 3,
-                  offset: Offset(0, 0), // changes position of shadow
-                ),
-              ],
-            ),
-            child: movieListItemWidget(movies[index]),
-          ),
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) {
-        return Divider(height: 1);
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    movieProvider = Provider.of<MovieProvider>(context, listen: false);
-    movieProvider.loadMovies();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Movie List'),
-      ),
-      body: Consumer<MovieProvider>(
-        builder: (context, provider, child) {
-          //When the data is well loaded
-          if (provider.movies.isNotEmpty) {
-            return movieListWidget(provider.movies);
-          }
-          //While the data is loading.
-          return Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
-  }
-
-/*   _pushSaved(Movie favoriteMovie) {
-     favoritProvider = Provider.of<FavoriteProvider>(context, listen: false);
-    Navigator.pushNamed(context, favoritProvider.addFavorites(favoriteMovie));
-  }*/
-}
-
-class MovieProvider extends ChangeNotifier {
-  MovieApi _movieData = MovieApi();
-  List<Movie> _movies = [];
-
-  List<Movie> get movies => _movies;
-
-  loadMovies() async {
-    List<Movie> listMovies = await _movieData.loadMovies();
-    _movies = listMovies;
-    notifyListeners();
-  }
-
-  clearMovies() {
-    _movies.clear();
-  }
 }

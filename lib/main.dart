@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:advancedprovider/screens/bottomnavigation.dart';
 import 'package:advancedprovider/screens/movielist.dart';
 import 'package:advancedprovider/screens/favoritelist.dart';
+
+import 'movieprovider.dart';
 void main() {
   runApp(MyApp());
 }
@@ -19,8 +21,6 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(
               create: (BuildContext context) => MovieProvider()),
-          ChangeNotifierProvider(
-              create: (BuildContext context) => FavoriteProvider()),
           ChangeNotifierProvider(
               create: (BuildContext context) => BottomNavigationProvider()),
         ],

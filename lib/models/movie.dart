@@ -18,7 +18,7 @@ class Movie {
         required this.releaseDate,
         required this.title,
         required this.voteAverage,
-        required this.voteCount});
+        required this.voteCount,});
 
 
   /// A necessary factory constructor for creating a new User instance
@@ -31,8 +31,8 @@ class Movie {
   /// helper method `_$UserToJson`.
   Map<String, dynamic> toJson() => _$MovieToJson(this);
 
-
 }
+
 
 /*{
 "adult": false,
