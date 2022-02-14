@@ -20,7 +20,7 @@ class _MovieListState extends State<MovieList> {
   bool isAdded = false;
 
   Widget movieListItemWidget(Movie movieItem) {
-    favoriteProvider = Provider.of<FavoriteProvider>(context, listen: false);
+    favoriteProvider = Provider.of<FavoriteProvider>(context);
     final favoritesList = favoriteProvider.favoriteMovies;
     return Row(
       children: [
@@ -69,36 +69,14 @@ class _MovieListState extends State<MovieList> {
                   ),
                 ),
                 ListTile(
-                  /*    leading: GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      setState(() {
-                        developer.log('OnTap works. Set State ',
-                            name: 'Test OnTap Func from GestureDetector');
-                        !favoritProvider.favoriteMovies.contains(movieItem)
-                            ? favoritesList.add(movieItem)
-                            : favoritesList.remove(movieItem);
-                     */ /*   ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(favoritProvider.favoriteMovies
-                                    .contains(movieItem)
-                                ? 'Added to favorites.'
-                                : 'Removed from favorites.'),
-                            duration: const Duration(seconds: 1),
-                          ),
-                        );*/ /*
-                      });
-                    },
-
-                  ),*/
                   trailing: IconButton(
-                    icon: favoritesList.contains(movieItem)
+                    icon: favoritesList.any((element) => element.id == movieItem.id)
                         ? const Icon(Icons.favorite, color: Colors.red)
                         : const Icon(Icons.favorite_border, color: Colors.grey),
                     onPressed: () {
                       developer.log('OnTap works. Set State ', name: 'Test OnTap Func from GestureDetector');
 
-                      !favoritesList.contains(movieItem)
+                      !favoritesList.any((element) => element.id == movieItem.id)
                           ? favoriteProvider.add(movieItem)
                           : favoriteProvider.remove(movieItem);
                     },
@@ -112,27 +90,6 @@ class _MovieListState extends State<MovieList> {
     );
   }
 
-  Widget _buildPopupDialog(BuildContext context) {
-    return new AlertDialog(
-      title: const Text('Popup example'),
-      content: new Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("Hello"),
-        ],
-      ),
-      actions: <Widget>[
-        new FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          textColor: Theme.of(context).primaryColor,
-          child: Text('Close'),
-        ),
-      ],
-    );
-  }
 
   Widget movieListWidget(List<Movie> movies) {
     return ListView.separated(

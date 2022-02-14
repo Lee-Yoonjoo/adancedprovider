@@ -21,7 +21,3 @@ class _HomeState extends State<Home>{
 
 }
 
-
-
-class MovieProvider extends ChangeNotifier{
-}
