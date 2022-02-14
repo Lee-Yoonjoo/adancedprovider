@@ -57,45 +57,6 @@ class _FavoriteListState extends State<FavoriteList> {
         ),
 
     );
-
-    /*Card(
-      child: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Row(
-          children: <Widget>[
-            Container(
-              width: 50.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(
-                      'http://image.tmdb.org/t/p/w500/${movieItem.posterPath}'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    movieItem.title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );*/
   }
 
   Widget movieListWidget(List<Movie> movies) {
@@ -147,7 +108,6 @@ class _FavoriteListState extends State<FavoriteList> {
           //When the data is well loaded
           if (provider.favoriteMovies.isNotEmpty) {
 
-
             return movieListWidget(provider.favoriteMovies);
           }
           //While the data is loading.
@@ -162,8 +122,9 @@ class _FavoriteListState extends State<FavoriteList> {
 
 class FavoriteProvider extends ChangeNotifier {
   final List<Movie> _favoriteMovies = [];
-
   List<Movie> get favoriteMovies => _favoriteMovies;
+  bool _isAdded = false;
+  bool get isAdded => _isAdded;
 
   void add(Movie favoriteMovie) {
     _favoriteMovies.add(favoriteMovie);
@@ -176,5 +137,9 @@ class FavoriteProvider extends ChangeNotifier {
     _favoriteMovies.remove(favoriteMovie);
     notifyListeners();
     developer.log('${favoriteMovie.title} is removed', name: 'FavoriteProvider');
+  }
+  set isAdded(bool value) {
+    _isAdded = value;
+    notifyListeners();
   }
 }
