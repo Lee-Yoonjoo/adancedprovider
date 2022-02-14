@@ -1,4 +1,3 @@
-
 import 'package:advancedprovider/screens/favoritelist.dart';
 import 'package:flutter/material.dart';
 import 'package:advancedprovider/models/movie.dart';
@@ -7,56 +6,63 @@ import 'dart:developer' as developer;
 
 import '../movieprovider.dart';
 
-
-
 class MovieList extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final movieProvider = Provider.of<MovieProvider>(context, listen: false);
     movieProvider.loadMovies();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Movie List'),
-      ),
-      body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: movieProvider.movies.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.all(10),
-            child: Container(
-              height: 250,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 3,
-                    blurRadius: 3,
-                    offset: Offset(0, 0), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: MovieListItemWidget(movieProvider.movies[index]),
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (context, innnerBoxIsScrolled) => [
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: const Text(
+              'Movie List',
+              style: TextStyle(color: Colors.grey),
             ),
-          );
-        },
-
+          ),
+        ],
+        body: ListView.builder(
+          shrinkWrap: true,
+          itemCount: movieProvider.movies.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                height: 250,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 3,
+                      blurRadius: 3,
+                      offset: Offset(0, 0), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: MovieListItemWidget(movieProvider.movies[index]),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 }
 
-
-
 class MovieListItemWidget extends StatelessWidget {
-
   final Movie movieItem;
 
   const MovieListItemWidget(this.movieItem, {Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final favoritesList = context.watch<MovieProvider>();
@@ -108,21 +114,29 @@ class MovieListItemWidget extends StatelessWidget {
                 ),
                 ListTile(
                   trailing: IconButton(
-                    icon:favoritesList.favoriteMovies.any((element) => element.id == movieItem.id)
-                        ? const Icon(Icons.favorite, color: Colors.red,)
+                    icon: favoritesList.favoriteMovies
+                            .any((element) => element.id == movieItem.id)
+                        ? const Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          )
                         : const Icon(Icons.favorite_border, color: Colors.grey),
                     onPressed: () {
-
-                      !favoritesList.favoriteMovies.any((element) => element.id == movieItem.id)
+                      !favoritesList.favoriteMovies
+                              .any((element) => element.id == movieItem.id)
                           ? favoritesList.add(movieItem)
                           : favoritesList.remove(movieItem);
 
-                      developer.log('OnTap works. Set State ', name: 'Test OnTap Func from GestureDetector');
+                      developer.log('OnTap works. Set State ',
+                          name: 'Test OnTap Func from GestureDetector');
                       // developer.log('${favoritesList.isAdded}', name: 'Update ListTile');
-                      for (var i = 0; i < favoritesList.favoriteMovies.length; i++) {
-                        developer.log('${favoritesList.favoriteMovies[i].title}', name: 'Data List');
+                      for (var i = 0;
+                          i < favoritesList.favoriteMovies.length;
+                          i++) {
+                        developer.log(
+                            '${favoritesList.favoriteMovies[i].title}',
+                            name: 'Data List');
                       }
-
                     },
                   ),
                 ),
@@ -132,8 +146,5 @@ class MovieListItemWidget extends StatelessWidget {
         ),
       ],
     );
-
   }
-
-
 }

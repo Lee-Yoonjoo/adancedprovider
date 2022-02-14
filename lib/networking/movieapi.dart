@@ -16,16 +16,6 @@ class MovieApi {
       List<dynamic> list = body['results'];
       //developer.log(list.toString(), name: 'JSON DATA in MovieAPI');
       return list.map<Movie>((item) => Movie.fromJson(item)).toList();
-/*      if (response.statusCode == 200) {
-        Map<String, dynamic> body = json.decode(response.toString());
-        if (body['results'] != null) {
-          List<dynamic> list = body['results'];
-       //   return list.map<Movie>((item) => Movie.fromJson(item)).toList();
-        }
-      } else {
-        throw Exception('Failed to load Movie');
-      }*/
-
   }
 }
 
