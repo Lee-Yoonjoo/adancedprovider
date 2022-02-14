@@ -108,18 +108,20 @@ class MovieListItemWidget extends StatelessWidget {
                 ),
                 ListTile(
                   trailing: IconButton(
-                    icon:favoritesList.favoriteMovies.contains(movieItem)
+                    icon:favoritesList.favoriteMovies.any((element) => element.id == movieItem.id)
                         ? const Icon(Icons.favorite, color: Colors.red,)
                         : const Icon(Icons.favorite_border, color: Colors.grey),
                     onPressed: () {
-                      developer.log('OnTap works. Set State ', name: 'Test OnTap Func from GestureDetector');
 
-                      !favoritesList.favoriteMovies.contains(movieItem)
+                      !favoritesList.favoriteMovies.any((element) => element.id == movieItem.id)
                           ? favoritesList.add(movieItem)
                           : favoritesList.remove(movieItem);
 
+                      developer.log('OnTap works. Set State ', name: 'Test OnTap Func from GestureDetector');
                       // developer.log('${favoritesList.isAdded}', name: 'Update ListTile');
-
+                      for (var i = 0; i < favoritesList.favoriteMovies.length; i++) {
+                        developer.log('${favoritesList.favoriteMovies[i].title}', name: 'Data List');
+                      }
 
                     },
                   ),

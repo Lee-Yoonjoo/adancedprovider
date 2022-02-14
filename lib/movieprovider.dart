@@ -32,7 +32,7 @@ class MovieProvider extends ChangeNotifier {
   }
 
   void remove(Movie favoriteMovie) {
-    _favoriteMovies.remove(favoriteMovie);
+    _favoriteMovies.removeWhere((element) => element.id==favoriteMovie.id);
     //isAdded = false;
     notifyListeners();
     developer.log('${favoriteMovie.title} is removed', name: 'FavoriteProvider');
