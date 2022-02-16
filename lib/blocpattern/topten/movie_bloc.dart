@@ -2,6 +2,7 @@ import 'package:advancedprovider/models/trending.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../models/movie.dart';
+import '../../models/trending.dart';
 import '../../networking/movieapi.dart';
 import 'movie_bloc_event.dart';
 import 'movie_bloc_state.dart';

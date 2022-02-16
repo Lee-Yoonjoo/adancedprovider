@@ -4,25 +4,29 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'movie.g.dart';
 
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class Movie {
-  String backdropPath;
+  @JsonKey(defaultValue: '')
+  String backdrop_path;
   int id;
+
   String overview;
-  String posterPath;
-  String releaseDate;
+  @JsonKey(defaultValue: '')
+  String poster_path;
+  String release_date;
   String title;
-  double voteAverage;
-  int voteCount;
+  double vote_average;
+  int vote_count;
   Movie(
-      {required this.backdropPath,
+      {required this.backdrop_path,
         required this.id,
         required this.overview,
-        required this.posterPath,
-        required this.releaseDate,
+        required this.poster_path,
+        required this.release_date,
         required this.title,
-        required this.voteAverage,
-        required this.voteCount,});
+        required this.vote_average,
+        required this.vote_count,});
 
 
   /// A necessary factory constructor for creating a new User instance

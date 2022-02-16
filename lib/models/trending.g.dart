@@ -8,22 +8,26 @@ part of 'trending.dart';
 
 Trending _$TrendingFromJson(Map<String, dynamic> json) => Trending(
       id: json['id'] as int,
-      posterPath: json['posterPath'] as String?,
-     // voteAverage: (json['voteAverage'] as num).toDouble(),
-      overview: json['overview'] as String?,
-      releaseDate: json['releaseDate'] as String?,
-      voteCount: json['voteCount'] as int,
-      backdropPath: json['backdropPath'] as String?,
-      title: json['title'] as String?,
+      poster_path: json['poster_path'] as String? ?? '',
+      vote_average: (json['vote_average'] as num).toDouble(),
+      overview: json['overview'] as String,
+      release_date: json['release_date'] as String? ?? '',
+      vote_count: json['vote_count'] as int,
+      backdrop_path: json['backdrop_path'] as String? ?? '',
+      title: json['title'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      first_air_date: json['first_air_date'] as String? ?? '',
     );
 
 Map<String, dynamic> _$TrendingToJson(Trending instance) => <String, dynamic>{
       'id': instance.id,
-      'posterPath': instance.posterPath,
-    //  'voteAverage': instance.voteAverage,
+      'poster_path': instance.poster_path,
+      'vote_average': instance.vote_average,
       'overview': instance.overview,
-      'releaseDate': instance.releaseDate,
-      'voteCount': instance.voteCount,
-      'backdropPath': instance.backdropPath,
+      'release_date': instance.release_date,
+      'vote_count': instance.vote_count,
+      'backdrop_path': instance.backdrop_path,
       'title': instance.title,
+      'name': instance.name,
+      'first_air_date': instance.first_air_date,
     };

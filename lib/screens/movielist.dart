@@ -76,7 +76,7 @@ class MovieListItemWidget extends StatelessWidget {
               bottomLeft: Radius.circular(20),
             ),
             child: Image.network(
-                'http://image.tmdb.org/t/p/w500/${movieItem.posterPath}')),
+                'http://image.tmdb.org/t/p/w500/${movieItem.poster_path}')),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
