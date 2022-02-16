@@ -5,6 +5,7 @@ import '../blocpattern/topten/movie_bloc.dart';
 import '../blocpattern/topten/movie_bloc_event.dart';
 import '../blocpattern/topten/movie_bloc_state.dart';
 import '../models/movie.dart';
+import '../models/trending.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -25,26 +26,26 @@ class _HomeState extends State<Home> {
         BlocBuilder<MovieBloc, MovieState>(
           builder: (context, state) {
               if (state is MovieLoaded) {
-              List<Movie> movies = state.movieList;
+              List<Trending> trendyMovies = state.movieList;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TopTenWidget(movies),
+                  TopTenWidget(trendyMovies),
+
+                  TitleWidget(),
+
                 ],
               );
             } else {
-              return Container(
-                child: Text('Something went wrong!!!'),
-              );
+                return Center(child: CircularProgressIndicator());
             }
           },
         ),
       ],
     );
   }
-
   //TopTen Widget
-  Widget TopTenWidget(List<Movie> movies) {
+  Widget TopTenWidget(List<Trending> movies) {
     return SizedBox(
       height: 200,
       child: PageView.builder(
@@ -78,7 +79,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           image: DecorationImage(
                             image: NetworkImage(
-                                'http://image.tmdb.org/t/p/w500/${movies[i].backdropPath}'),
+                                'http://image.tmdb.org/t/p/w500/${movies[i].backdrop_path}'),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -88,11 +89,11 @@ class _HomeState extends State<Home> {
                         left: 15,
                       ),
                       child: Text(
-                        movies[i].title.toUpperCase(),
+                       movies[i].title!=''? movies[i].title : movies[i].name,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontFamily: 'muli',
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -108,6 +109,21 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Widget TitleWidget (){
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+      child : Text(
+        'Comming Soon'.toUpperCase(),
+        style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+          color: Colors.black45,
+          fontFamily: 'muli',
+        ),
+      ),
+    );
+  }
+
   //Comming Soon
   Widget CommingSoonWidget() {
     return SizedBox();
@@ -118,7 +134,7 @@ class _HomeState extends State<Home> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<MovieBloc>(
-          create: (_) => MovieBloc()..add(MovieEventStarted(0, '')),
+          create: (_) => MovieBloc()..add(MovieEventStarted()),
         ),
 /*        BlocProvider<PersonBloc>(
           create: (_) => PersonBloc()..add(PersonEventStated()),

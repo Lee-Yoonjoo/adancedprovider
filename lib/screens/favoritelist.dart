@@ -28,9 +28,7 @@ class FavoriteList extends StatelessWidget {
           ),
         ],
 
-        body:
-
-        MediaQuery.removePadding(
+        body:  MediaQuery.removePadding(
         removeTop: true,
         context: context,
         child: Consumer<MovieProvider>(
@@ -103,7 +101,7 @@ class FavoriteItemTile extends StatelessWidget {
                       topRight: Radius.circular(10.0)),
                   image: DecorationImage(
                     image: NetworkImage(
-                        'http://image.tmdb.org/t/p/w500/${movieItem.posterPath}'),
+                        'http://image.tmdb.org/t/p/w500/${movieItem.poster_path}'),
                     fit: BoxFit.fitWidth,
                   )),
             ),
