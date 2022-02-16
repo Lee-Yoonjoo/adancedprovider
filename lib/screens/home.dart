@@ -16,6 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _index = 0;
 
+
   //whole body
 
   Widget _buildBody(BuildContext context) {
@@ -57,14 +58,51 @@ class _HomeState extends State<Home> {
               elevation: 3,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
-              child: Center(
-                child: Text(
-                  '${movies[i].title}',
-                  style: TextStyle(fontSize: 15),
+              child: GestureDetector(
+                onTap: () {/*
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          MovieDetailScreen(movie: movie),
+                    ),
+                  );*/
+                },
+                child: Stack(
+                  alignment: Alignment.bottomLeft,
+                  children: <Widget>[
+                    Container(
+                      height: double.infinity,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                'http://image.tmdb.org/t/p/w500/${movies[i].backdropPath}'),
+                            fit: BoxFit.cover,
+                          )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: 15,
+                        left: 15,
+                      ),
+                      child: Text(
+                        movies[i].title.toUpperCase(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          fontFamily: 'muli',
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          );
+              ),
+            );
         },
       ),
     );
