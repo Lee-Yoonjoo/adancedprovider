@@ -7,23 +7,23 @@ part of 'movie.dart';
 // **************************************************************************
 
 Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
-      backdropPath: json['backdrop_path'],
-      id : json['id'] as int,
+      backdropPath: json['backdropPath'] as String,
+      id: json['id'] as int,
       overview: json['overview'] as String,
-      posterPath: json['poster_path'] as String,
-      releaseDate: json['release_date'] as String,
+      posterPath: json['posterPath'] as String,
+      releaseDate: json['releaseDate'] as String,
       title: json['title'] as String,
-      voteAverage: (json['vote_average'] as num).toDouble(),
-      voteCount: json['vote_count'] as int,
+      voteAverage: (json['voteAverage'] as num).toDouble(),
+      voteCount: json['voteCount'] as int,
     );
 
-
 Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
-      'id' : instance.id,
+      'backdropPath': instance.backdropPath,
+      'id': instance.id,
       'overview': instance.overview,
-      'poster_path': instance.posterPath,
-      'release_date': instance.releaseDate,
+      'posterPath': instance.posterPath,
+      'releaseDate': instance.releaseDate,
       'title': instance.title,
-      'vote_average': instance.voteAverage,
-      'vote_count': instance.voteCount,
+      'voteAverage': instance.voteAverage,
+      'voteCount': instance.voteCount,
     };

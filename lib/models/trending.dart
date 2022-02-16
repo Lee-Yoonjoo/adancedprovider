@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'trending.g.dart'
+part 'trending.g.dart';
 @JsonSerializable()
 class Trending {
   final int id;
   final String? posterPath;
-  final double voteAverage;
+  //final double voteAverage;
   final String? overview;
   final String? releaseDate;
   final int voteCount;
@@ -14,7 +14,7 @@ class Trending {
   Trending(
       {required this.id,
       required this.posterPath,
-      required this.voteAverage,
+    //  required this.voteAverage,
       required this.overview,
       required this.releaseDate,
       required this.voteCount,
