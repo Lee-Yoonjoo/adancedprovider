@@ -1,3 +1,4 @@
+import 'package:advancedprovider/models/trending.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../models/movie.dart';
@@ -35,8 +36,8 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     final service = MovieApi();
     emit (MovieLoading());
     try {
-      List<Movie> movieList;
-      movieList = await service.loadTopRatedMovies();
+      List<Trending> movieList;
+      movieList = await service.loadTrendyMovies();
       emit (MovieLoaded(movieList));
     } on Exception catch (e) {
       print(e);

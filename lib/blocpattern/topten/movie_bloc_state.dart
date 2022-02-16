@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../models/movie.dart';
+import '../../models/trending.dart';
 
 
 abstract class MovieState extends Equatable {
@@ -14,7 +15,7 @@ abstract class MovieState extends Equatable {
 class MovieLoading extends MovieState {}
 
 class MovieLoaded extends MovieState {
-  final List<Movie> movieList;
+  final List<Trending> movieList;
   const MovieLoaded(this.movieList);
 
   @override

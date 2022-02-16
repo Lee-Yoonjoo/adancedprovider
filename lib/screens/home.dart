@@ -5,6 +5,7 @@ import '../blocpattern/topten/movie_bloc.dart';
 import '../blocpattern/topten/movie_bloc_event.dart';
 import '../blocpattern/topten/movie_bloc_state.dart';
 import '../models/movie.dart';
+import '../models/trending.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -24,11 +25,11 @@ class _HomeState extends State<Home> {
         BlocBuilder<MovieBloc, MovieState>(
           builder: (context, state) {
               if (state is MovieLoaded) {
-              List<Movie> movies = state.movieList;
+              List<Trending> trendingMovies = state.movieList;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TopTenWidget(movies),
+                  TopTenWidget(trendingMovies),
                 ],
               );
             } else {
@@ -43,7 +44,7 @@ class _HomeState extends State<Home> {
   }
 
   //TopTen Widget
-  Widget TopTenWidget(List<Movie> movies) {
+  Widget TopTenWidget(List<Trending> movies) {
     return SizedBox(
       height: 200,
       child: PageView.builder(
