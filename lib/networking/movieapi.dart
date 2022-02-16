@@ -44,19 +44,7 @@ class MovieApi {
     developer.log('$uri', name: 'LOAD TRENDY MOVIES in MovieAPI');
     return list.map<Trending>((item) => Trending.fromJson(item)).toList();
   }
-  Future<List<Trending>> loadTrendyMovies() async {
-    var apiKey = {
-      'api_key': '9d9e6bf58b150463d0b2176cc132f1d0'
-    };
-    var uri = Uri.https('api.themoviedb.org', '/3/trending/all/day', apiKey);
-    developer.log('$uri', name: 'JSON DATA in MovieAPI');
-    final response = await http.get(uri);
 
-    Map<String, dynamic> body = json.decode(response.body);
-    List<dynamic> list = body['results'];
-    developer.log('${list.toString()}', name: 'JSON DATA in MovieAPI');
-    return list.map<Trending>((item) => Trending.fromJson(item)).toList();
-  }
 
 }
 
