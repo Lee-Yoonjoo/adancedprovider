@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:advancedprovider/screens/bottomnavigation.dart';
-import 'package:advancedprovider/screens/movielist.dart';
-import 'package:advancedprovider/screens/favoritelist.dart';
-
 import 'movieprovider.dart';
+
 void main() {
   runApp(MyApp());
 }

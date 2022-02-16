@@ -6,6 +6,7 @@ part 'movie.g.dart';
 
 @JsonSerializable()
 class Movie {
+  String backdropPath;
   int id;
   String overview;
   String posterPath;
@@ -14,7 +15,8 @@ class Movie {
   double voteAverage;
   int voteCount;
   Movie(
-      {required this.id,
+      {required this.backdropPath,
+        required this.id,
         required this.overview,
         required this.posterPath,
         required this.releaseDate,

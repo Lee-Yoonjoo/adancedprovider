@@ -1,4 +1,3 @@
-import 'package:advancedprovider/screens/favoritelist.dart';
 import 'package:flutter/material.dart';
 import 'package:advancedprovider/models/movie.dart';
 import 'package:provider/provider.dart';

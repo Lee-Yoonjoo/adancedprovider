@@ -5,7 +5,6 @@ import 'package:advancedprovider/models/movie.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as developer;
 
-import '../models/favorite.dart';
 
 class FavoriteList extends StatelessWidget {
   const FavoriteList({Key? key}) : super(key: key);
