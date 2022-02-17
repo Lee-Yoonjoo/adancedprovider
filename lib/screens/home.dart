@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
       children: [
         BlocBuilder<MovieBloc, MovieState>(
           builder: (context, state) {
-              if (state is MovieLoaded) {
+            if (state is MovieLoaded) {
               List<Trending> trendyMovies = state.movieList;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,13 +37,14 @@ class _HomeState extends State<Home> {
                 ],
               );
             } else {
-                return Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator());
             }
           },
         ),
       ],
     );
   }
+
   //TopTen Widget
   Widget TopTenWidget(List<Trending> movies) {
     return SizedBox(
@@ -60,7 +61,8 @@ class _HomeState extends State<Home> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               child: GestureDetector(
-                onTap: () {/*
+                onTap: () {
+                  /*
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -75,13 +77,16 @@ class _HomeState extends State<Home> {
                     Container(
                       height: double.infinity,
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          image: DecorationImage(
-                            image: NetworkImage(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child:   movies[i].backdrop_path != '' ? FadeInImage(
+                          placeholder: AssetImage('packages/advancedprovider/images/place_holder.png'),
+                          image:  NetworkImage(
                                 'http://image.tmdb.org/t/p/w500/${movies[i].backdrop_path}'),
                             fit: BoxFit.cover,
-                          )),
+                          ) :
+                        Image(image : AssetImage('packages/advancedprovider/images/place_holder.png')),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
@@ -89,7 +94,8 @@ class _HomeState extends State<Home> {
                         left: 15,
                       ),
                       child: Text(
-                       movies[i].title!=''? movies[i].title : movies[i].name,
+                        movies[i].title != '' ? movies[i].title : movies[i]
+                            .name,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -102,17 +108,17 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              ),
-            );
+            ),
+          );
         },
       ),
     );
   }
 
-  Widget TitleWidget (){
+  Widget TitleWidget() {
     return Padding(
       padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-      child : Text(
+      child: Text(
         'Comming Soon'.toUpperCase(),
         style: TextStyle(
           fontSize: 15,
@@ -134,7 +140,9 @@ class _HomeState extends State<Home> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<MovieBloc>(
-          create: (_) => MovieBloc()..add(MovieEventStarted()),
+          create: (_) =>
+          MovieBloc()
+            ..add(MovieEventStarted()),
         ),
 /*        BlocProvider<PersonBloc>(
           create: (_) => PersonBloc()..add(PersonEventStated()),

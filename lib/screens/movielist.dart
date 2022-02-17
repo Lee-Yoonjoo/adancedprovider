@@ -10,6 +10,7 @@ class MovieList extends StatelessWidget {
   Widget build(BuildContext context) {
     final movieProvider = Provider.of<MovieProvider>(context, listen: false);
     movieProvider.loadMovies();
+    developer.log("Loadmovies Called", name: 'Check Lifecycle of Widget');
 
     return Scaffold(
       body: NestedScrollView(
@@ -131,14 +132,7 @@ class MovieListItemWidget extends StatelessWidget {
 
                       developer.log('OnTap works. Set State ',
                           name: 'Test OnTap Func from GestureDetector');
-                      // developer.log('${favoritesList.isAdded}', name: 'Update ListTile');
-                      for (var i = 0;
-                          i < favoritesList.favoriteMovies.length;
-                          i++) {
-                        developer.log(
-                            '${favoritesList.favoriteMovies[i].title}',
-                            name: 'Data List');
-                      }
+
                     },
                   ),
                 ),
