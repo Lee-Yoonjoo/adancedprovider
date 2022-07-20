@@ -4,11 +4,8 @@ abstract class MovieEvent extends Equatable {
   const MovieEvent();
 }
 
-class MovieEventStarted extends MovieEvent {
-  //final int movieId;
-  //final String query;
-
-  const MovieEventStarted();
+class MovieEventLoadMovies extends MovieEvent {
+  const MovieEventLoadMovies();
 
   @override
   List<Object> get props => [];

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:advancedprovider/screens/home.dart';
-import 'package:advancedprovider/screens/movielist.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as developer;
 
-import 'favoritelist.dart';
+import '../view_models/bottom_navi_view_model.dart';
+import '../views/favorite_list.dart';
+import '../views/home.dart';
+import '../views/movie_list.dart';
 
 class BottomNavigation extends StatelessWidget {
   BottomNavigation({Key? key}) : super(key: key);
@@ -12,24 +13,21 @@ class BottomNavigation extends StatelessWidget {
   Widget _navigationBody() {
     switch (_bottomNavigationProvider.currentNavigationIndex) {
       case 0:
-        return Home();
-        break;
+        return const Home();
       case 1:
-        return MovieList();
-        break;
+        return const MovieList();
       case 2:
-        return FavoriteList();
-        break;
+        return const FavoriteList();
     }
     return Container();
   }
 
   //Why it should be 'late'
-  late BottomNavigationProvider _bottomNavigationProvider;
+  late BottomNavigationViewModel _bottomNavigationProvider;
 
   @override
   Widget build(BuildContext context) {
-    _bottomNavigationProvider = Provider.of<BottomNavigationProvider>(context);
+    _bottomNavigationProvider = Provider.of<BottomNavigationViewModel>(context);
     return Scaffold(
       body: _navigationBody(),
       bottomNavigationBar: BottomNavigationBar(
@@ -47,16 +45,5 @@ class BottomNavigation extends StatelessWidget {
         },
       ),
     );
-  }
-}
-
-class BottomNavigationProvider extends ChangeNotifier {
-  int _index = 0;
-
-  int get currentNavigationIndex => _index;
-
-  updatePage(int index) {
-    _index = index;
-    notifyListeners();
   }
 }

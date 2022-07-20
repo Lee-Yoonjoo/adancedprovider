@@ -1,14 +1,15 @@
-
 import 'package:flutter/material.dart';
 
 import 'models/movie.dart';
-import 'networking/movieapi.dart';
 
 import 'dart:developer' as developer;
+
+import 'movie_api/movie_api.dart';
+
 class MovieProvider extends ChangeNotifier {
-  MovieApi _movieData = MovieApi();
+  final MovieApi _movieData = MovieApi();
   List<Movie> _movies = [];
-  List<Movie> _favoriteMovies = [];
+  final List<Movie> _favoriteMovies = [];
 
   List<Movie> get movies => _movies;
   List<Movie> get favoriteMovies => _favoriteMovies;
@@ -23,19 +24,16 @@ class MovieProvider extends ChangeNotifier {
     _movies.clear();
   }
 
-
   void add(Movie favoriteMovie) {
     _favoriteMovies.add(favoriteMovie);
-    //isAdded = true;
     developer.log('${favoriteMovie.title} is added', name: 'FavoriteProvider');
     notifyListeners();
   }
 
   void remove(Movie favoriteMovie) {
-    _favoriteMovies.removeWhere((element) => element.id==favoriteMovie.id);
-    //isAdded = false;
+    _favoriteMovies.removeWhere((element) => element.id == favoriteMovie.id);
     notifyListeners();
-    developer.log('${favoriteMovie.title} is removed', name: 'FavoriteProvider');
+    developer.log('${favoriteMovie.title} is removed',
+        name: 'FavoriteProvider');
   }
-
 }

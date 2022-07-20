@@ -1,70 +1,13 @@
+import 'package:advancedprovider/movieprovider.dart';
 import 'package:flutter/material.dart';
-import 'package:advancedprovider/models/movie.dart';
 import 'package:provider/provider.dart';
-import 'dart:developer' as developer;
 
-import '../movieprovider.dart';
+import '../models/movie.dart';
 
-class MovieList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final movieProvider = Provider.of<MovieProvider>(context, listen: false);
-    movieProvider.loadMovies();
-    developer.log("Loadmovies Called", name: 'Check Lifecycle of Widget');
-
-    return Scaffold(
-      body: NestedScrollView(
-          floatHeaderSlivers: true,
-          headerSliverBuilder: (context, innnerBoxIsScrolled) => [
-                const SliverAppBar(
-                  floating: true,
-                  snap: true,
-                  centerTitle: true,
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  title: Text(
-                    'Movie List',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
-              ],
-          body: MediaQuery.removePadding(
-            removeTop: true,
-            context: context,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: movieProvider.movies.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Container(
-                    height: 250,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 3,
-                          blurRadius: 3,
-                          offset: Offset(0, 0), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: MovieListItemWidget(movieProvider.movies[index]),
-                  ),
-                );
-              },
-            ),
-          )),
-    );
-  }
-}
-
-class MovieListItemWidget extends StatelessWidget {
+class MovieItem extends StatelessWidget {
   final Movie movieItem;
 
-  const MovieListItemWidget(this.movieItem, {Key? key}) : super(key: key);
+  const MovieItem(this.movieItem, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -130,9 +73,7 @@ class MovieListItemWidget extends StatelessWidget {
                           ? favoritesList.add(movieItem)
                           : favoritesList.remove(movieItem);
 
-                      developer.log('OnTap works. Set State ',
-                          name: 'Test OnTap Func from GestureDetector');
-
+                      debugPrint('Test OnTap Func from GestureDetector');
                     },
                   ),
                 ),
