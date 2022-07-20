@@ -10,7 +10,7 @@ class MovieList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final movieViewModel = Provider.of<MovieViewModel>(context, listen: false);
+    final movieViewModel = context.watch<MovieViewModel>();
     List<Movie> movies = movieViewModel.movies;
     return Scaffold(
       body: NestedScrollView(

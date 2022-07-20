@@ -5,30 +5,21 @@ import '../movie_api/movie_api.dart';
 
 class MovieViewModel extends ChangeNotifier {
   final MovieApi _movieData = MovieApi();
-  final List<Movie> _movies = [];
   final List<Movie> _favoriteMovies = [];
+  List<Movie> _movies = [];
 
-  List<Movie> movies = [];
+  List<Movie> get movies => _movies;
   List<Movie> get favoriteMovies => _favoriteMovies;
 
   loadMovies() async {
     try {
-      movies = await _movieData.loadPopularMovies();
+      _movies = await _movieData.loadPopularMovies();
     } catch (e) {
       debugPrint(e.toString());
     }
 
     notifyListeners();
   }
-
-  Future<List<Movie>> getMovies() async {
-    var movieList = await _movieData.loadPopularMovies();
-    return movieList;
-  }
-/*
-  clearMovies() {
-    _movies.clear();
-  } */
 
   void add(Movie favoriteMovie) {
     _favoriteMovies.add(favoriteMovie);
