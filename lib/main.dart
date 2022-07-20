@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'movieprovider.dart';
+import 'view_models/movie_view_model.dart';
 import 'view_models/bottom_navi_view_model.dart';
 import 'widgets/bottom_navigation.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-              create: (BuildContext context) => MovieProvider()),
+              create: (BuildContext context) => MovieViewModel()),
           ChangeNotifierProvider(
               create: (BuildContext context) => BottomNavigationViewModel()),
         ],

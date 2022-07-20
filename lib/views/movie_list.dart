@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../movieprovider.dart';
+import '../models/movie.dart';
+import '../view_models/movie_view_model.dart';
 import '../widgets/moive_item.dart';
 
 class MovieList extends StatelessWidget {
@@ -9,8 +10,8 @@ class MovieList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final movieProvider = Provider.of<MovieProvider>(context, listen: false);
-    movieProvider.loadMovies();
+    final movieViewModel = Provider.of<MovieViewModel>(context, listen: false);
+    List<Movie> movies = movieViewModel.movies;
     return Scaffold(
       body: NestedScrollView(
           floatHeaderSlivers: true,
@@ -32,7 +33,7 @@ class MovieList extends StatelessWidget {
             context: context,
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: movieProvider.movies.length,
+              itemCount: movies.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.all(10),
@@ -51,7 +52,7 @@ class MovieList extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: MovieItem(movieProvider.movies[index]),
+                    child: MovieItem(movies[index]),
                   ),
                 );
               },

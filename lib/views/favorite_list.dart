@@ -1,8 +1,8 @@
-import 'package:advancedprovider/movieprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/faovirte_item.dart';
+import '../view_models/movie_view_model.dart';
 
 class FavoriteList extends StatelessWidget {
   const FavoriteList({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class FavoriteList extends StatelessWidget {
         body: MediaQuery.removePadding(
           removeTop: true,
           context: context,
-          child: Consumer<MovieProvider>(
+          child: Consumer<MovieViewModel>(
             builder: (context, provider, index) => provider
                     .favoriteMovies.isNotEmpty
                 ? GridView.builder(

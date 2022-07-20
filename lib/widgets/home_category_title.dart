@@ -1,4 +1,4 @@
-import 'package:advancedprovider/movieprovider.dart';
+import 'package:advancedprovider/view_models/movie_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

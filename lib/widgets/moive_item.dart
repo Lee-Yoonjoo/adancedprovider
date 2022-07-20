@@ -1,4 +1,4 @@
-import 'package:advancedprovider/movieprovider.dart';
+import 'package:advancedprovider/view_models/movie_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +11,7 @@ class MovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoritesList = context.watch<MovieProvider>();
+    final favoritesList = context.watch<MovieViewModel>();
     return Row(
       children: [
         ClipRRect(
