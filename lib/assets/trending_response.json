@@ -1,0 +1,431 @@
+{
+    "page": 1,
+    "results": [
+    {
+    "adult": false,
+    "backdrop_path": "/9eAn20y26wtB3aet7w9lHjuSgZ3.jpg",
+    "id": 507086,
+    "title": "Jurassic World Dominion",
+    "original_language": "en",
+    "original_title": "Jurassic World Dominion",
+    "overview": "Four years after Isla Nublar was destroyed, dinosaurs now live—and hunt—alongside humans all over the world. This fragile balance will reshape the future and determine, once and for all, whether human beings are to remain the apex predators on a planet they now share with history’s most fearsome creatures.",
+    "poster_path": "/kAVRgw7GgK1CfYEJq8ME6EvRIgU.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    12,
+    28,
+    878
+    ],
+    "popularity": 12919.366,
+    "release_date": "2022-06-01",
+    "video": false,
+    "vote_average": 7.026,
+    "vote_count": 1774
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/AfvIjhDu9p64jKcmohS4hsPG95Q.jpg",
+    "id": 756999,
+    "title": "The Black Phone",
+    "original_language": "en",
+    "original_title": "The Black Phone",
+    "overview": "Finney Shaw, a shy but clever 13-year-old boy, is abducted by a sadistic killer and trapped in a soundproof basement where screaming is of little use. When a disconnected phone on the wall begins to ring, Finney discovers that he can hear the voices of the killer’s previous victims. And they are dead set on making sure that what happened to them doesn’t happen to Finney.",
+    "poster_path": "/bxHZpV02OOu9vq3sb3MsOudEnYc.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    27,
+    53
+    ],
+    "popularity": 5659.349,
+    "release_date": "2022-06-22",
+    "video": false,
+    "vote_average": 7.886,
+    "vote_count": 841
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/p1F51Lvj3sMopG948F5HsBbl43C.jpg",
+    "id": 616037,
+    "title": "Thor: Love and Thunder",
+    "original_language": "en",
+    "original_title": "Thor: Love and Thunder",
+    "overview": "After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now inexplicably wields Mjolnir as the Mighty Thor. Together they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.",
+    "poster_path": "/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    28,
+    12,
+    14
+    ],
+    "popularity": 3402.627,
+    "release_date": "2022-07-08",
+    "video": false,
+    "vote_average": 6.756,
+    "vote_count": 1123
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/nW5fUbldp1DYf2uQ3zJTUdachOu.jpg",
+    "id": 718789,
+    "title": "Lightyear",
+    "original_language": "en",
+    "original_title": "Lightyear",
+    "overview": "Legendary Space Ranger Buzz Lightyear embarks on an intergalactic adventure alongside a group of ambitious recruits and his robot companion Sox.",
+    "poster_path": "/4sBbVik86fOuyRY4kFGbn2sooQk.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    16,
+    878,
+    12,
+    28,
+    10751
+    ],
+    "popularity": 6641.695,
+    "release_date": "2022-06-15",
+    "video": false,
+    "vote_average": 7.24,
+    "vote_count": 795
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/zIRssaKBGBitHXo4h680IGCJFIg.jpg",
+    "id": 108296,
+    "name": "Resident Evil",
+    "original_language": "en",
+    "original_name": "Resident Evil",
+    "overview": "Nearly three decades after the discovery of the T-virus, an outbreak reveals the Umbrella Corporation's dark secrets. Based on the horror franchise.",
+    "poster_path": "/q2IlzP9bQNDdGLlX9jtms5MaOCh.jpg",
+    "media_type": "tv",
+    "genre_ids": [
+    18,
+    10765
+    ],
+    "popularity": 656.386,
+    "first_air_date": "2022-07-14",
+    "vote_average": 6.034,
+    "vote_count": 104,
+    "origin_country": [
+    "US"
+    ]
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg",
+    "id": 453395,
+    "title": "Doctor Strange in the Multiverse of Madness",
+    "original_language": "en",
+    "original_title": "Doctor Strange in the Multiverse of Madness",
+    "overview": "Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.",
+    "poster_path": "/61PVJ06oecwvcBisoAQu6SDfdcS.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    14,
+    28,
+    12
+    ],
+    "popularity": 4245.028,
+    "release_date": "2022-05-04",
+    "video": false,
+    "vote_average": 7.507,
+    "vote_count": 4601
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/4GVXnm6ulibGRq2CODRBLhz02nA.jpg",
+    "id": 522927,
+    "title": "The Forgiven",
+    "original_language": "en",
+    "original_title": "The Forgiven",
+    "overview": "Over a weekend in the High Atlas Mountains of Morocco, a random accident reverberates through the lives of both the local Muslims and Western visitors to a house party in a grand villa.",
+    "poster_path": "/2brQI8G0IAbk1sqK2V9sRXHVkPj.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    18
+    ],
+    "popularity": 21.316,
+    "release_date": "2022-07-01",
+    "video": false,
+    "vote_average": 5.833,
+    "vote_count": 12
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+    "id": 66732,
+    "name": "Stranger Things",
+    "original_language": "en",
+    "original_name": "Stranger Things",
+    "overview": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.",
+    "poster_path": "/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
+    "media_type": "tv",
+    "genre_ids": [
+    18,
+    10765,
+    9648
+    ],
+    "popularity": 2104.439,
+    "first_air_date": "2016-07-15",
+    "vote_average": 8.633,
+    "vote_count": 12289,
+    "origin_country": [
+    "US"
+    ]
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/wgdWNBqPIAH29ZsL3I0AVx7XRed.jpg",
+    "id": 615173,
+    "title": "The Witch: Part 2. The Other One",
+    "original_language": "ko",
+    "original_title": "마녀 2",
+    "overview": "A girl wakes up in a huge secret laboratory. then accidentally meets another girl who is trying to protect her house from a gang. The mystery girl overthrows the gang with her unexpected powers, and laboratory staff set out to find her.",
+    "poster_path": "/9YTuscJXmr9Iua62amCgGSU8PDW.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    28,
+    9648,
+    53
+    ],
+    "popularity": 195.91,
+    "release_date": "2022-06-15",
+    "video": false,
+    "vote_average": 8.071,
+    "vote_count": 21
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/m1nuMHBCiNy6pMGzRAdH5frNesN.jpg",
+    "id": 88324,
+    "name": "Virgin River",
+    "original_language": "en",
+    "original_name": "Virgin River",
+    "overview": "After seeing an ad for a midwife, a recently divorced big-city nurse moves to the redwood forests of California, where she meets an intriguing man.",
+    "poster_path": "/w4WqEKKQa35nXps41QbQ3586nZ0.jpg",
+    "media_type": "tv",
+    "genre_ids": [
+    18
+    ],
+    "popularity": 127.238,
+    "first_air_date": "2019-12-06",
+    "vote_average": 8.037,
+    "vote_count": 321,
+    "origin_country": [
+    "US"
+    ]
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/odJ4hx6g6vBt4lBWKFD1tI8WS4x.jpg",
+    "id": 361743,
+    "title": "Top Gun: Maverick",
+    "original_language": "en",
+    "original_title": "Top Gun: Maverick",
+    "overview": "After more than thirty years of service as one of the Navy’s top aviators, and dodging the advancement in rank that would ground him, Pete “Maverick” Mitchell finds himself training a detachment of TOP GUN graduates for a specialized mission the likes of which no living pilot has ever seen.",
+    "poster_path": "/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    28,
+    18
+    ],
+    "popularity": 8895.522,
+    "release_date": "2022-05-24",
+    "video": false,
+    "vote_average": 8.365,
+    "vote_count": 1613
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/oE0J0zaLjJZkecx2seNH90YeSmk.jpg",
+    "id": 820912,
+    "title": "Persuasion",
+    "original_language": "en",
+    "original_title": "Persuasion",
+    "overview": "Living with her snobby family on the brink of bankruptcy, Anne Elliot is an unconforming woman with modern sensibilities. When Frederick Wentworth - the dashing one she once sent away - crashes back into her life, Anne must choose between putting the past behind her or listening to her heart when it comes to second chances.",
+    "poster_path": "/s99WrKSEVR4RVvwm5Zn2cqrHTMM.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    10749,
+    18,
+    35
+    ],
+    "popularity": 167.795,
+    "release_date": "2022-07-01",
+    "video": false,
+    "vote_average": 5.8,
+    "vote_count": 130
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
+    "id": 438148,
+    "title": "Minions: The Rise of Gru",
+    "original_language": "en",
+    "original_title": "Minions: The Rise of Gru",
+    "overview": "A fanboy of a supervillain supergroup known as the Vicious 6, Gru hatches a plan to become evil enough to join them, with the backup of his followers, the Minions.",
+    "poster_path": "/wKiOkZTN9lUUUNZLmtnwubZYONg.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    10751,
+    16,
+    12,
+    35,
+    14
+    ],
+    "popularity": 9496.542,
+    "release_date": "2022-06-29",
+    "video": false,
+    "vote_average": 7.562,
+    "vote_count": 417
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/wNQpfAZkySbinb93qVwWIWaot1x.jpg",
+    "id": 809107,
+    "title": "Z-O-M-B-I-E-S 3",
+    "original_language": "en",
+    "original_title": "Z-O-M-B-I-E-S 3",
+    "overview": "Zed and Addison are beginning their final year at Seabrook High in the town that’s become a safe haven for monsters and humans alike. Zed is anticipating an athletic scholarship that will make him the first Zombie to attend college, while Addison is gearing up for Seabrook’s first international cheer-off competition. Then suddenly, extraterrestrial beings appear around Seabrook, provoking something other than friendly competition.",
+    "poster_path": "/vqzdv4nArhuZxd7il0boKaVxQMF.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    10402,
+    14,
+    35,
+    878,
+    10751,
+    10770
+    ],
+    "popularity": 1320.414,
+    "release_date": "2022-07-09",
+    "video": false,
+    "vote_average": 8.114,
+    "vote_count": 79
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/ocUp7DJBIc8VJgLEw1prcyK1dYv.jpg",
+    "id": 634649,
+    "title": "Spider-Man: No Way Home",
+    "original_language": "en",
+    "original_title": "Spider-Man: No Way Home",
+    "overview": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+    "poster_path": "/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    28,
+    12,
+    878
+    ],
+    "popularity": 1633.7,
+    "release_date": "2021-12-15",
+    "video": false,
+    "vote_average": 8.054,
+    "vote_count": 14244
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/jq1OvQj3El8BxhUxKmfmJaL8CzA.jpg",
+    "id": 939475,
+    "title": "Too Old for Fairy Tales",
+    "original_language": "pl",
+    "original_title": "Za duzy na bajki",
+    "overview": "In Waldek's life, filled mainly with computer games, there is a real earthquake. During her absence, mum stays under the care of a crazy and unpredictable aunt, who introduces discipline that has been alien to him so far and imposes new duties. But although an extraordinary relative gives Waldek a real survival camp, the boy also receives the most valuable life lesson from her.",
+    "poster_path": "/mwT58VqFZyAeQbscfynxtroqaft.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    10751,
+    35
+    ],
+    "popularity": 4.311,
+    "release_date": "2022-03-18",
+    "video": false,
+    "vote_average": 6.2,
+    "vote_count": 4
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/s6F7mjxEZ6ewUCPZBN2a9RXgW2P.jpg",
+    "id": 861072,
+    "title": "Don't Make Me Go",
+    "original_language": "en",
+    "original_title": "Don't Make Me Go",
+    "overview": "A terminally ill man and his teenage daughter embark on a road trip from California to New Orleans for his 20th college reunion. While there, he secretly hopes she can reunite with the mother who left them long ago.",
+    "poster_path": "/lUPrLn7g5x0jrPP5pZWMVGlQy2s.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    18
+    ],
+    "popularity": 64.806,
+    "release_date": "2022-06-13",
+    "video": false,
+    "vote_average": 7,
+    "vote_count": 16
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/vkELTbRMS0vtoYa6uafVvP8iPWu.jpg",
+    "id": 113036,
+    "name": "American Horror Stories",
+    "original_language": "en",
+    "original_name": "American Horror Stories",
+    "overview": "An anthology series of stand alone episodes delving into horror myths, legends and lore.",
+    "poster_path": "/50AuXrycD7Q61o0Kppby5DTVOKP.jpg",
+    "media_type": "tv",
+    "genre_ids": [
+    18,
+    9648,
+    10765
+    ],
+    "popularity": 176.028,
+    "first_air_date": "2021-07-15",
+    "vote_average": 7.894,
+    "vote_count": 472,
+    "origin_country": [
+    "US"
+    ]
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/zGLHX92Gk96O1DJvLil7ObJTbaL.jpg",
+    "id": 338953,
+    "title": "Fantastic Beasts: The Secrets of Dumbledore",
+    "original_language": "en",
+    "original_title": "Fantastic Beasts: The Secrets of Dumbledore",
+    "overview": "Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald's growing legion of followers.",
+    "poster_path": "/8ZbybiGYe8XM4WGmGlhF0ec5R7u.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    14,
+    12,
+    28
+    ],
+    "popularity": 1294.643,
+    "release_date": "2022-04-06",
+    "video": false,
+    "vote_average": 6.815,
+    "vote_count": 2290
+    },
+    {
+    "adult": false,
+    "backdrop_path": "/9FFz0ZYuNmBmKQBaZ5ibSqGvnI3.jpg",
+    "id": 800855,
+    "title": "Live Is Life",
+    "original_language": "es",
+    "original_title": "Live is life: la gran aventura",
+    "overview": "Summer 1985. As every year, Rodri travels from Catalonia to Galicia and is reunited with his four friends. As real-world problems begin to undermine their friendship, the five of them embark on a nighttime adventure in search of a mythical object.",
+    "poster_path": "/8mxHAHepyXaV9rAhYIbimv11Pqy.jpg",
+    "media_type": "movie",
+    "genre_ids": [
+    35,
+    12
+    ],
+    "popularity": 13.877,
+    "release_date": "2022-06-03",
+    "video": false,
+    "vote_average": 6.773,
+    "vote_count": 11
+    }
+    ],
+    "total_pages": 1000,
+    "total_results": 20000
+    }

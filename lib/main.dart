@@ -1,3 +1,9 @@
+import 'dart:async';
+
+import 'package:advancedprovider/locator.dart';
+import 'package:advancedprovider/movie_api/movie_api.dart';
+import 'package:advancedprovider/movie_api/movie_api_impl.dart';
+import 'package:advancedprovider/movie_api/movie_api_impl.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +13,15 @@ import 'view_models/bottom_navi_view_model.dart';
 import 'widgets/bottom_navigation.dart';
 
 void main() {
-  runApp(const MyApp());
+  var useMockData = true;
+  setupLocator(useMockData: useMockData);
+  runZonedGuarded(() {
+    runApp(const MyApp());
+  }, (error, stackTrace) {
+    debugPrint('runZonedGuarded: Caught error in my root zone.');
+    debugPrint(error.toString());
+    debugPrint(stackTrace.toString());
+  });
 }
 
 class MyApp extends StatefulWidget {

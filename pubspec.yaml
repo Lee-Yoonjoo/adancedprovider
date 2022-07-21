@@ -40,6 +40,7 @@ dependencies:
   equatable: ^2.0.3
   mockito: ^5.2.0
   mocktail: ^0.3.0
+  get_it: ^7.1.3
 
 dev_dependencies:
   integration_test:
@@ -56,13 +57,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-  # The following line ensures that the Material Icons font is
+  # The following line ensures that the MaSterial Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
   assets:
     - packages/advancedprovider/images/place_holder.png
-
+    - packages/advancedprovider/assets/movie_response.json
+    - packages/advancedprovider/assets/trending_response.json
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

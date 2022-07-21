@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../locator.dart';
 import '../models/movie.dart';
 import '../movie_api/movie_api.dart';
 
 class MovieViewModel extends ChangeNotifier {
-  final MovieApi _movieData = MovieApi();
+  final MovieApi _movieData = locator();
   final List<Movie> _favoriteMovies = [];
   List<Movie> _movies = [];
 
