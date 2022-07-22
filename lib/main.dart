@@ -12,8 +12,9 @@ import 'view_models/movie_view_model.dart';
 import 'view_models/bottom_navi_view_model.dart';
 import 'widgets/bottom_navigation.dart';
 
-void main() {
-  var useMockData = true;
+void main() { WidgetsFlutterBinding.ensureInitialized();
+
+  var useMockData = false;
   setupLocator(useMockData: useMockData);
   runZonedGuarded(() {
     runApp(const MyApp());
